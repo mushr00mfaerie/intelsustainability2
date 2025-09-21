@@ -1,0 +1,178 @@
+/* Base colors and fonts */
+body {
+  /* Set background to dark blue */
+  background: #0a2342;
+  color: #fff;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+/* Header styles */
+.hero {
+  background: linear-gradient(90deg, #0a2342 60%, #1976d2 100%);
+  padding: 32px 0 24px 0;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.intel-logo {
+  width: 120px; /* Resize logo */
+  margin-bottom: 16px;
+}
+
+.hero h1 {
+  font-size: 2.2rem;
+  margin: 0 0 12px 0;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #e3f2fd;
+  margin-bottom: 0;
+}
+
+/* Timeline layout using flexbox */
+.timeline {
+  display: flex;
+  flex-direction: row;
+  overflow-x: auto;
+  gap: 32px; /* Increased gap for larger cards */
+  padding: 32px 16px;
+  justify-content: flex-start;
+  align-items: stretch;
+  /* Show scrollbar for desktop for better navigation */
+  scrollbar-width: auto;
+  scrollbar-color: #1976d2 #0a2342;
+}
+.timeline::-webkit-scrollbar {
+  height: 14px; /* Make scrollbar visible and easier to use */
+}
+.timeline::-webkit-scrollbar-thumb {
+  background: #1976d2;
+  border-radius: 8px;
+}
+.timeline::-webkit-scrollbar-track {
+  background: #0a2342;
+  border-radius: 8px;
+}
+
+/* Timeline card styles */
+.timeline-card {
+  background: #111827;
+  border-radius: 20px;
+  min-width: 320px; /* Larger card */
+  max-width: 340px;
+  box-shadow: 0 4px 16px rgba(10,35,66,0.18);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s;
+  position: relative;
+}
+.timeline-card:hover,
+.timeline-card:focus-within {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(25,118,210,0.25);
+}
+
+/* Card image and overlay */
+.card-image {
+  position: relative;
+  width: 100%;
+  height: 220px; /* Larger image area */
+  border-radius: 16px 16px 0 0;
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+}
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Make sure image fills the area */
+  border-radius: 16px 16px 0 0;
+  transition: opacity 0.3s;
+}
+
+/* Overlay with year and info, hidden by default */
+.card-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(10,35,66,0.95);
+  color: #fff;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 18px 12px;
+  border-radius: 16px 16px 0 0;
+  transition: opacity 0.3s;
+  text-align: center;
+  pointer-events: none;
+  font-size: 1.08rem;
+}
+
+/* Show overlay on hover or focus */
+.card-image:hover .card-overlay,
+.card-image:focus .card-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Overlay text styles */
+.card-overlay h2 {
+  font-size: 1.1rem;
+  margin: 0 0 8px 0;
+  color: #90caf9;
+}
+.card-overlay p {
+  font-size: 0.98rem;
+  color: #e3f2fd;
+  margin: 0;
+}
+
+/* Timeline tip */
+.timeline-tip {
+  text-align: center;
+  color: #b3e5fc;
+  font-size: 1rem;
+  margin: 12px 0 32px 0;
+}
+
+/* Responsive design for mobile */
+@media (max-width: 700px) {
+  .timeline {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 6px;
+    align-items: center;
+    overflow-x: visible;
+  }
+  .timeline-card {
+    min-width: 90vw;
+    max-width: 98vw;
+  }
+  .card-image {
+    height: 180px; /* Slightly smaller for mobile */
+  }
+  .hero h1 {
+    font-size: 1.3rem;
+  }
+  .intel-logo {
+    width: 80px;
+  }
+}
+
+/* Add a little focus style for accessibility */
+.card-image:focus {
+  outline: 2px solid #1976d2;
+  outline-offset: 2px;
+}
+
